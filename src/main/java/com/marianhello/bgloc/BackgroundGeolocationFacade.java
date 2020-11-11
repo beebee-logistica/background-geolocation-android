@@ -57,6 +57,10 @@ public class BackgroundGeolocationFacade {
             Manifest.permission.ACCESS_FINE_LOCATION
     };
 
+    public static final String[] BG_LOCATION_PERMISSION = {
+        Manifest.permission.ACCESS_BACKGROUND_LOCATION
+    };
+
     private boolean mServiceBroadcastReceiverRegistered = false;
     private boolean mLocationModeChangeReceiverRegistered = false;
     private boolean mIsPaused = false;
@@ -506,5 +510,9 @@ public class BackgroundGeolocationFacade {
 
     public static LocationTransform getLocationTransform() {
         return LocationServiceImpl.getLocationTransform();
+    }
+
+    public boolean hasBackgroundLocationPermission() {
+        return hasPermissions(getContext(), BG_LOCATION_PERMISSION);
     }
 }
